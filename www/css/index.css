@@ -1,0 +1,32 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.battery-info {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#battery-level,
+#power-source {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#battery-level {
+    color: #337ab7;
+}
+
+#power-source {
+    color: #5cb85c;
+}

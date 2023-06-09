@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Aplicación Cordova</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="cordova.js"></script>
+    <script>
+        // Espera a que el dispositivo esté listo
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // Función de deviceready, se ejecuta cuando el dispositivo está listo
+        function onDeviceReady() {
+            // Agrega un listener para el evento de cambio de estado de la batería
+            window.addEventListener("batterystatus", onBatteryStatus, false);
+        }
+
+        // Función de cambio de estado de la batería
+        function onBatteryStatus(status) {
+            // Nivel de batería en porcentaje
+            var level = status.level;
+
+            // Estado de la conexión a la fuente de alimentación (true = conectado, false = desconectado)
+            var isPlugged = status.isPlugged;
+
+            // Actualiza  con la información de la batería
+            document.getElementById("battery-level").textContent = "Nivel de batería: " + level + "%";
+            document.getElementById("power-source").textContent = "Fuente de alimentación: " + (isPlugged ? "Conectado" : "Desconectado");
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Mi Aplicación Cordova</h1>
+
+    <div class="battery-info">
+        <div id="battery-level"></div>
+        <div id="power-source"></div>
+    </div>
+</div>
+</body>
+</html>
