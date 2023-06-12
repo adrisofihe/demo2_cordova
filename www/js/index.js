@@ -19,11 +19,26 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-document.addEventListener('deviceready', onDeviceReady, false);
 
-function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
-}
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // Función de deviceready, se ejecuta cuando el dispositivo está listo
+        function onDeviceReady() {
+            // Agrega un listener para el evento de cambio de estado de la batería
+            window.addEventListener("batterystatus", onBatteryStatus, false);
+        }
+
+        // Función de cambio de estado de la batería
+        function onBatteryStatus(status) {
+            // Nivel de batería en porcentaje
+            var level = status.level;
+
+            // Estado de la conexión a la fuente de alimentación (true = conectado, false = desconectado)
+            var isPlugged = status.isPlugged;
+
+            // Actualiza  con la información de la batería
+            document.getElementById("battery-level").textContent = "Nivel de bateria: " + level + "%";
+            document.getElementById("power-source").textContent = "Fuente de alimentacion: " + (isPlugged ? "Conectado" : "Desconectado");
+        }
